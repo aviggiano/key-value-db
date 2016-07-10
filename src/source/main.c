@@ -1,8 +1,13 @@
 #include <stdio.h>
 #include "hash_table.h"
 
+#include "request_parser.h"
+
 int main() {
 	hash_table_t* t = hash_table_constructor();
+
+	printf("ret %d\n", execute_request("CREATE \"asd sd\" kakaroto", t));
+
 	// Insert
 	printf("Insert Begin\n");
 	hash_table_insert_elem(&t, "r.cmgleite@gmail.com", "1");
