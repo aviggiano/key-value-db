@@ -1,14 +1,11 @@
 #ifndef REQUEST_PARSER_H
 #define REQUEST_PARSER_H
 
-#include <stdint.h>
+#include <stdlib.h>
 #include <limits.h>
-
-#include "hash_table.h"
 
 #define NELEMS(x)  (sizeof(x) / sizeof((x)[0]))
 
-//const uint32_t MAX_CMD_SIZE = 256;
 const uint32_t MAX_PARAMS = 16;
 
 typedef enum {
@@ -16,19 +13,25 @@ typedef enum {
     ERR_NUM_PARAMS
 } request_error_t;
 
-/* typedef enum { */
-/* 	CREATE_ACTION, */
-/* 	KEY_VALUE_ACTION, */
-/* 	KEY_ONLY_ACTION */
-/* } action_t; */
 
+/*
+ * Struct containing command name
+ * and number of parameters
+ */
 typedef struct {
     const char* name;
     uint32_t params;
-	//	void (*const action)(void);
-	//	action_t action_type;
 } command_t;
 
-int execute_request(const char* request, hash_table_t* t);
+
+/*
+ * Parse request finding command and parameters
+ * *** IMPORTANT ***
+ * ALLOCATES LIST OF params THAT SHOULD BE
+ * DEALLOCATED BY THE USER.
+ *     RETURNS index of command in command_list
+ * if successful or request_error_t otherwise
+ */
+int parse_request(const char* request, const command_t* command_list, size_t comm_list_size, char** params);
 
 #endif

@@ -36,7 +36,7 @@ int start_server(uint16_t port) {
 	return 0;
 }
 
-int wait_connection(socket_callback_t callback) {
+int wait_connection(socket_callback_t callback, size_t resp_max_len) {
 	static const size_t BUFF_SIZE = 256;
 	static const char stop_char = ';';
 	

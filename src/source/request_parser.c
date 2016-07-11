@@ -1,6 +1,5 @@
 #include "request_parser.h"
 
-#include <stdlib.h>
 #include <string.h>
 
 #include <stdio.h>
@@ -95,45 +94,4 @@ int parse_request(const char* request, const command_t* command_list, size_t com
     }
     
     return command;
-}
-
-int execute_request(const char* request, hash_table_t* t) {
-    char* params[MAX_PARAMS];
-    
-    const command_t command_list[] = {
-	{ "CREATE", 2 },
-	{ "READ",   1 },
-	{ "UPDATE", 2 },
-	{ "DELETE", 1 }
-    };
-
-    int command = parse_request(request,
-				command_list, NELEMS(command_list),
-				params);
-
-    // error
-    if (command < 0)
-	return command;
-
-    // execute command
-    switch (command) {
-    case 0:
-	hash_table_insert_elem(&t, params[0], params[1]);
-	break;
-    case 1:
-	hash_table_find_elem(t, params[0]);
-	break;
-    case 2:
-	hash_table_update_elem(t, params[0], params[1]);
-	break;
-    case 3:
-	hash_table_delete_elem(t, params[0]);
-	break;
-    }
-
-    // free params
-    for (size_t i = 0; i < command_list[command].params; i++)
-	free(params[i]);
-    
-    return 0;
 }
