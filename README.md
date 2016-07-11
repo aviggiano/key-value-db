@@ -25,18 +25,18 @@ To Run all tests using valgrind, use:
   `$make test-valgrind`
   
 ## TCP Server Endpoints
-`CREATE key value`
+`CREATE key value;`
 
   Creates new element 'key' with value 'value'
 
-`READ key`
+`READ key;`
 
   Returns value of element 'key'
 
-`UPDATE key new-value`
+`UPDATE key new-value;`
 
   Updates value of element 'key' to 'new-value'
 
-`DELETE key`
+`DELETE key;`
 
   Deletes element 'key'
