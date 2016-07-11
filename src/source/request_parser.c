@@ -5,8 +5,6 @@
 
 #include <stdio.h>
 
-#include "hash_table.h"
-
 #define UNKNOWN_COMMAND -1
 
 inline int is_whitespace(const char c) {

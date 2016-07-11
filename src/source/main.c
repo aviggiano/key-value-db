@@ -2,12 +2,15 @@
 #include "hash_table.h"
 
 #include "request_parser.h"
+#include "tcp_server.h"
 
 int main() {
 	hash_table_t* t = hash_table_constructor();
 
 	printf("ret %d\n", execute_request("CREATE \"asd sd\" kakaroto", t));
-
+	start_server(8888);
+	wait_connection();
+	
 	// Insert
 	printf("Insert Begin\n");
 	hash_table_insert_elem(&t, "r.cmgleite@gmail.com", "1");

@@ -4,6 +4,8 @@
 #include <stdint.h>
 #include <limits.h>
 
+#include "hash_table.h"
+
 #define NELEMS(x)  (sizeof(x) / sizeof((x)[0]))
 
 //const uint32_t MAX_CMD_SIZE = 256;
