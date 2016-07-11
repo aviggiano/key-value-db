@@ -34,23 +34,37 @@ int parse_command(const char* request, size_t* index, const command_t* command_l
 
 char* parse_param(const char* request, size_t* index) {
     size_t initial_i = *index;
-    int ignore_whitespaces = 0;
 
-    while (request[*index] != '\0') { //TODO: check no parmas
-	// param contains spaces
-	if (request[*index] == '\"')
-	    ignore_whitespaces = !ignore_whitespaces;
+    const char quotes = '\"';
 
-	// end of param
-        if (!ignore_whitespaces && is_whitespace(request[*index]))
-	    break;
-
+    if (request[*index] == quotes) { // quoted param
+	initial_i++;
 	(*index)++;
+
+	while (request[*index] != quotes) {
+	    // inconsistent quotes
+	    if (request[*index] == '\0')
+		return NULL;
+	    
+	    (*index)++;
+	}
+    }
+    else { // non-quoted param
+	while (request[*index] != '\0') {
+	    if (is_whitespace(request[*index]))
+		break;
+
+	    (*index)++;
+	}
     }
 
     size_t param_len = *index - initial_i;
     if (param_len == 0)
 	return NULL;
+
+    // skip closing quotes
+    if (request[*index] == quotes)
+	(*index)++;
     
     return strndup(&request[initial_i], param_len);
 }
