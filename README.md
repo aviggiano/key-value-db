@@ -26,10 +26,17 @@ To Run all tests using valgrind, use:
   
 ## TCP Server Endpoints
 CREATE key value
+
   Creates new element 'key' with value 'value'
+
 READ key
+
   Returns value of element 'key'
+
 UPDATE key new-value
+
   Updates value of element 'key' to 'new-value'
+
 DELETE key
+
   Deletes element 'key'
