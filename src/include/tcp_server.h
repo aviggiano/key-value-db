@@ -14,7 +14,7 @@ typedef enum {
 	WRITE_ERR
 } socket_error_t;
 
-typedef int (*const socket_callback_t)(const char*);
+typedef const char* (*const socket_callback_t)(const char*);
 
 /*
  * Start TCP Server

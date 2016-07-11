@@ -36,7 +36,7 @@ int start_server(uint16_t port) {
 	return 0;
 }
 
-int wait_connection(socket_callback_t callback, size_t resp_max_len) {
+int wait_connection(socket_callback_t callback) {
 	static const size_t BUFF_SIZE = 256;
 	static const char stop_char = ';';
 	
@@ -65,11 +65,9 @@ int wait_connection(socket_callback_t callback, size_t resp_max_len) {
 			msg_buff[stop_ptr - msg_buff] = '\0';
 
 			// execute callback
-			int ret = callback(msg_buff);
+		    const char* ans = callback(msg_buff);
 			
 			// answer client
-			char ans[16];
-			sprintf(ans, "%d", ret);
 			int write_size = write(client_sock, ans, strlen(ans));
 			if (write_size == -1) {
 				perror("Write failed");

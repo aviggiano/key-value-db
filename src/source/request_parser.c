@@ -81,7 +81,7 @@ int parse_request(const char* request, const command_t* command_list, size_t com
 	    return ERR_NUM_PARAMS;
 	}
 	
-	printf("param %s\n", params[i]);
+	//printf("param %s\n", params[i]);
 	skip_whitespaces(request, &index);
     }
 

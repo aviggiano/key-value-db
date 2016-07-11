@@ -2,6 +2,7 @@
 #define REQUEST_PARSER_H
 
 #include <stdlib.h>
+#include <stdint.h>
 #include <limits.h>
 
 #define NELEMS(x)  (sizeof(x) / sizeof((x)[0]))
