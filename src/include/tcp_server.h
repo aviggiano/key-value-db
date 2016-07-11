@@ -14,16 +14,19 @@ typedef enum {
 	WRITE_ERR
 } socket_error_t;
 
+typedef int (*const socket_callback_t)(const char*);
+
 /*
  * Start TCP Server
- * RETURNS 0 if successful, socket_error_t otherwise
+ *     RETURNS 0 if successful, socket_error_t otherwise
  */
 int start_server(uint16_t port);
 
 /*
- * Accepts incomming connection
- * RETURNS 0 if successful, socket_error_t otherwise
+ * Accepts incomming connection and executes callback
+ * for every new message received
+ *     RETURNS 0 if successful, socket_error_t otherwise
  */
-int wait_connection();
+int wait_connection(socket_callback_t callback);
 
 #endif

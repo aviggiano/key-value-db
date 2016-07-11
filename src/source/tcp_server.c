@@ -6,9 +6,6 @@
 #include<arpa/inet.h> //inet_addr
 #include<unistd.h>    //write
 
-const size_t BUFF_SIZE = 10;
-const char stop_char = ';';
-
 int socket_desc = 0;
 
 int start_server(uint16_t port) {
@@ -39,7 +36,10 @@ int start_server(uint16_t port) {
 	return 0;
 }
 
-int wait_connection() {	
+int wait_connection(socket_callback_t callback) {
+	static const size_t BUFF_SIZE = 256;
+	static const char stop_char = ';';
+	
     puts("Waiting for incoming connections...");
      
     // accept connection from an incoming client
@@ -63,9 +63,13 @@ int wait_connection() {
 		char* stop_ptr = strchr(msg_buff, stop_char);
 		if (stop_ptr) {
 			msg_buff[stop_ptr - msg_buff] = '\0';
-		
+
+			// execute callback
+			int ret = callback(msg_buff);
+			
 			// answer client
-			char ans[] = "OK\n";
+			char ans[16];
+			sprintf(ans, "%d", ret);
 			int write_size = write(client_sock, ans, strlen(ans));
 			if (write_size == -1) {
 				perror("Write failed");
