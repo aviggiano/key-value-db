@@ -1,21 +1,21 @@
 # key-value-db
-This project contains different implementations of hash maps
 
-Currently developed:
-  1.  Using a Binary Search Tree as underlying data structure
-  2.  Using a Dynamic resizing array as underlying data structure
+This project contains a key-value store that supports CRUD operations over a simple TCP message protocol.
 
 ## Dependencies:
-  This project depends on:
-  1.  [googletest](https://github.com/google/googletest) 
-  2.  [valgrind](http://valgrind.org/)
+  
+This project depends on:
+  
+1.  [googletest](https://github.com/google/googletest) 
+2.  [valgrind](http://valgrind.org/)
 
 ## Building
-1.  `$ ./configure.sh`
-  This step will simply init the git submodule for googletest
-2.  `$ make`
+
+1.  `$ ./configure.sh` # initializes googletest submodule
+2.  `$ make` # compiles the server
 
 ## Testing
+
 To Run all unit tests, use:
 
     $ make test
