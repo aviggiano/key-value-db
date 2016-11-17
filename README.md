@@ -10,21 +10,25 @@ Currently developed:
   1.  [googletest](https://github.com/google/googletest) 
   2.  [valgrind](http://valgrind.org/)
 
-## How to build
+## Building
 1.  `$ ./configure.sh`
   This step will simply init the git submodule for googletest
 2.  `$ make`
 
-## Tests
+## Testing
 To Run all unit tests, use:
 
     $ make test
  
 To Run all tests using valgrind, use:
 
-    $make test-valgrind`
+    $ make test-valgrind`
+    
+## Running
+
+    $ ./key-value-db # runs on port 8888
   
-## TCP Server (the semicolon is mandatory)
+## Commands (the semicolon is necessary)
 
 `CREATE key value;`
 
@@ -41,3 +45,8 @@ To Run all tests using valgrind, use:
 `DELETE key;`
 
   Deletes element 'key'
+
+## Using netcat to send commants
+
+    $ echo "CREATE mykey myvalue;" | netcat -q 1 127.0.0.1 8888
+    $ echo "READ mykey;" | netcat -q 1 127.0.0.1 8888
