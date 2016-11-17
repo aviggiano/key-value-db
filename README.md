@@ -26,25 +26,18 @@ To Run all tests using valgrind, use:
 
     $ ./key-value-db # runs on port 8888
   
-## Commands (the semicolon is necessary)
+## Commands
 
-`CREATE key value;`
+The semicolon is necessary:
 
-  Creates new element 'key' with value 'value'
-
-`READ key;`
-
-  Returns value of element 'key'
-
-`UPDATE key new-value;`
-
-  Updates value of element 'key' to 'new-value'
-
-`DELETE key;`
-
-  Deletes element 'key'
+1. `CREATE key value;` - Creates new element 'key' with value 'value'
+2. `READ key;` - Returns value of element 'key'
+3. `UPDATE key new-value;` - Updates value of element 'key' to 'new-value'
+4. `DELETE key;` - Deletes element 'key'
 
 ## Using netcat to send commands
 
-    $ echo "CREATE mykey myvalue;" | netcat -q 1 127.0.0.1 8888
-    $ echo "READ mykey;" | netcat -q 1 127.0.0.1 8888
+```
+$ echo "CREATE mykey myvalue;" | netcat -q 1 127.0.0.1 8888
+$ echo "READ mykey;" | netcat -q 1 127.0.0.1 8888
+```
