@@ -10,7 +10,7 @@ This project contains a key-value store that supports CRUD operations over a sim
 ## Building
 
 1.  `$ ./configure.sh` `# initializes googletest submodule`
-2.  `$ make`           `# compiles the server`
+2.  `$ make`                `# compiles the server`
 
 ## Testing
 
