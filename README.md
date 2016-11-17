@@ -46,7 +46,7 @@ To Run all tests using valgrind, use:
 
   Deletes element 'key'
 
-## Using netcat to send commants
+## Using netcat to send commands
 
     $ echo "CREATE mykey myvalue;" | netcat -q 1 127.0.0.1 8888
     $ echo "READ mykey;" | netcat -q 1 127.0.0.1 8888
