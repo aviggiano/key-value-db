@@ -2,9 +2,7 @@
 
 This project contains a key-value store that supports CRUD operations over a simple TCP message protocol.
 
-## Dependencies:
-  
-This project depends on:
+## Dependencies
   
 1.  [googletest](https://github.com/google/googletest) 
 2.  [valgrind](http://valgrind.org/)
