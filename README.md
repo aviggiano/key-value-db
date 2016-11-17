@@ -9,8 +9,8 @@ This project contains a key-value store that supports CRUD operations over a sim
 
 ## Building
 
-1.  `$ ./configure.sh # initializes googletest submodule`
-2.  `$ make # compiles the server`
+1.  `$ ./configure.sh   # initializes googletest submodule`
+2.  `$ make             # compiles the server`
 
 ## Testing
 
@@ -20,11 +20,11 @@ To Run all unit tests, use:
  
 To Run all tests using valgrind, use:
 
-    $ make test-valgrind`
+    $ make test-valgrind
     
 ## Running
 
-    $ ./key-value-db # runs on port 8888
+    $ ./key-value-db    # runs on port 8888
   
 ## Commands
 
