@@ -1,6 +1,6 @@
 # key-value-db
 
-This project contains a key-value store that supports CRUD operations over a simple TCP message protocol.
+This project contains a key-value store that supports CRUD operations over a simple TCP-based message protocol.
 
 ## Dependencies
   
